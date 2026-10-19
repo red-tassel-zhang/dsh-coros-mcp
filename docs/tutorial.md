@@ -152,10 +152,10 @@ token 元数据里应有 `scope = mcp.tools openid offline_access`、`expires_in
 
 ### 步骤 B：写本地代理
 
-文件：`proxy/coros-mcp-proxy.js`（本仓库自带，零依赖）。作用：**只拦 `tools/list` 的响应**，
+文件：`coros-mcp-proxy.js`（本仓库自带，零依赖）。作用：**只拦 `tools/list` 的响应**，
 把嵌套的 `$defs` 提升到根；其余消息逐字节透传。
 
-完整代码见 [`proxy/coros-mcp-proxy.js`](../proxy/coros-mcp-proxy.js)，这里只说设计要点（改代码前先看这几条）：
+完整代码见 [`coros-mcp-proxy.js`](../coros-mcp-proxy.js)，这里只说设计要点（改代码前先看这几条）：
 
 1. **`spawn(process.execPath, [npxCli, ...])` 而不是 `spawn('npx')`。**
    Windows 上 `node_modules/.bin` 里同时有 `npx`（无扩展名的 sh 脚本）、`npx.cmd`、`npx.ps1`；
@@ -181,7 +181,7 @@ DSH 的插件树是"bundle 层 → `cordis.patch.yml` 层"叠加，**你自己�
         transport: stdio
         command: 'C:/Program Files/nodejs/node.exe'
         args:
-          - '<repo>/proxy/coros-mcp-proxy.js'
+          - '<repo>/coros-mcp-proxy.js'
           - 'https://mcpcn.coros.com/mcp'
         toolCallTimeoutMs: 120000
 ```
@@ -289,7 +289,7 @@ Copy-Item '<DSH_HOME>\profiles\desktop\cordis.patch.yml.bak-<时间戳>' `
 | 文件 | 作用 |
 |---|---|
 | `<DSH_HOME>/profiles/<profile>/cordis.patch.yml` | MCP 行（含注释与回退方法） |
-| `<repo>/proxy/coros-mcp-proxy.js` | `$defs` 提升代理（零依赖） |
+| `<repo>/coros-mcp-proxy.js` | `$defs` 提升代理（零依赖） |
 | `~/.mcp-auth/mcp-remote-v1/*_tokens.json` | OAuth 登录态（30 天有效 + refresh） |
 | `cordis.patch.yml.bak-*` | 回滚点 |
 

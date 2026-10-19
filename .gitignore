@@ -3,10 +3,14 @@ node_modules/
 *.log
 
 # 媒体中间产物（只提交成片）
-media/frames/
-media/*.tmp
-media/build.log
-media/preview_*.png
+promo/frames/
+promo/*.tmp
+promo/build.log
+promo/preview_*.png
+
+# Python
+__pycache__/
+*.pyc
 
 # 编辑器
 .vscode/

@@ -11,12 +11,23 @@ Pointer '/$defs/Section' does not exist
 
 如果你在别的地方见过这句报错，找对地方了。
 
-[![40 秒看完这个仓库](media/cover.png)](media/promo.mp4)
+## 下载这两个文件就能用
+
+| 文件 | 用途 | 直链 |
+|---|---|---|
+| `coros-mcp-proxy.js` | 唯一需要下载的代码，零依赖、单文件 | [下载][dl-proxy] |
+| `cordis.patch.yml` | 合并进 profile 的配置片段 | [下载][dl-patch] |
+
+[dl-proxy]: https://raw.githubusercontent.com/red-tassel-zhang/dsh-coros-mcp/main/coros-mcp-proxy.js
+[dl-patch]: https://raw.githubusercontent.com/red-tassel-zhang/dsh-coros-mcp/main/cordis.patch.yml
+
+不需要 clone，也不需要 `npm install`。具体往哪放、怎么改，见 [30 秒接入](#30-秒接入)。
 
 ---
 
 ## 目录
 
+- [下载这两个文件就能用](#下载这两个文件就能用)
 - [为什么需要这个仓库](#为什么需要这个仓库)
 - [官方资料](#官方资料)
 - [30 秒接入](#30-秒接入)
@@ -76,7 +87,7 @@ COROS 服务端把 `$defs` 写在子 schema 内部，`$ref` 却按文档根去�
 
 COROS 官方提供了 MCP 接入，官方自述是「主要运动手表品牌首个官方支持的 MCP」。对外只给两条路径：**HTTP OAuth URL** 或 **Skill（`npm install -g coros-mcp`）**，公开支持的平台是 WorkBuddy、ChatGPT、豆包、Claude、OpenClaw。
 
-![COROS 官方公告：支持的 AI 平台与两种接入方式](media/official-coros-mcp.jpg)
+![COROS 官方公告：支持的 AI 平台与两种接入方式](docs/assets/official-coros-mcp.jpg)
 
 - 官方推文（微信公众号）：[COROS MCP 介绍](https://mp.weixin.qq.com/s?__biz=MzkyOTQ5NjE4OQ==&mid=2247592261&idx=2&sn=37a2c37a6e2eaa5ec43850d786fd5c9d&chksm=c3f1deb4c414b0868ec88d826f4777ea578794985ed2ccdf35742c50bf598bc7a12f8f46f4d0) —— 微信文章，需在微信内打开，可能要求过验证
 - 官方仓库与接入指南：[coroslab/COROS-MCP](https://github.com/coroslab/COROS-MCP)
@@ -101,9 +112,10 @@ npx -y mcp-remote@0.14.3 https://mcpcn.coros.com/mcp
 
 ### 2. 把代理放到一个固定位置
 
+只需要 `coros-mcp-proxy.js` 这一个文件，零依赖，放哪都行——建议放在不会被清理的地方，比如 `~/.dsh/coros-proxy/`：
+
 ```bash
-git clone https://github.com/red-tassel-zhang/dsh-coros-mcp.git
-# 只需要 proxy/coros-mcp-proxy.js 这一个文件，零依赖
+curl -O https://raw.githubusercontent.com/red-tassel-zhang/dsh-coros-mcp/main/coros-mcp-proxy.js
 ```
 
 ### 3. 写进 profile 的 patch 层
@@ -197,18 +209,14 @@ node coros-mcp-proxy.js <mcp-url> [传给 mcp-remote 的额外参数...]
 
 ```
 .
-├── proxy/
-│   └── coros-mcp-proxy.js      # 唯一的代码：$defs 提升代理（零依赖）
+├── coros-mcp-proxy.js      # ← 唯一需要下载的代码：$defs 提升代理（零依赖）
+├── cordis.patch.yml        # ← 要合并进 profile 的配置片段
 ├── test/
-│   └── hoist.test.js           # 核心逻辑单测（node:test，6 个用例）
-├── examples/
-│   └── cordis.patch.yml        # 可直接抄的配置片段
+│   └── hoist.test.js       # 核心逻辑单测（node:test，6 个用例）
 ├── docs/
-│   └── tutorial.md             # 完整接入教程：分步、排错表、回滚、方法论
-├── media/
-│   ├── promo.mp4               # 40 秒推广视频
-│   ├── cover.png               # 封面
-│   └── make_promo.py           # 视频生成脚本（纯 PIL + ffmpeg）
+│   ├── tutorial.md         # 完整接入教程：分步、排错表、回滚、方法论
+│   └── assets/             # 文档里用到的图
+├── promo/                  # 推广素材，跟使用无关（视频、封面、生成脚本）
 └── README.md
 ```
 
@@ -268,3 +276,13 @@ node --test test/hoist.test.js
 ## License
 
 MIT
+
+---
+
+## 推广素材
+
+跟使用无关，单独放在 [`promo/`](promo/) 里：40 秒演示视频、封面、生成脚本。
+
+- [promo/promo.mp4](promo/promo.mp4) —— 30 秒看懂症状 → 根因 → 方案
+- [promo/README.md](promo/README.md) —— 想改文案的话怎么重跑
+

@@ -7,7 +7,7 @@
 const test = require('node:test');
 const assert = require('node:assert');
 
-const { hoistDefs, normalizeResponse } = require('../proxy/coros-mcp-proxy.js');
+const { hoistDefs, normalizeResponse } = require('../coros-mcp-proxy.js');
 
 /** 复刻 COROS 的实际写法：$defs 在子 schema 里，$ref 指文档根。 */
 function brokenSchema() {

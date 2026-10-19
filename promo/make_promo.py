@@ -3,12 +3,12 @@
 
 纯 PIL 逐帧绘制 + ffmpeg 编码，不依赖任何外部素材，所以可以随时改文案重出。
 
-    python media/make_promo.py
+    python promo/make_promo.py
 
 输出：
-    media/promo.mp4    成片
-    media/cover.png    封面（取第一幕中段）
-    media/preview_*.png 三张抽帧，方便肉眼检查
+    promo/promo.mp4    成片
+    promo/cover.png    封面（取第一幕中段）
+    promo/preview_*.png 抽帧，方便肉眼检查
 """
 
 from __future__ import annotations

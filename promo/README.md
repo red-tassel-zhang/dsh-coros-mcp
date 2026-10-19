@@ -12,13 +12,13 @@
 ## 重新生成
 
 ```bash
-python media/make_promo.py
+python promo/make_promo.py
 ```
 
 需要 Pillow 和 ffmpeg。ffmpeg 默认从 PATH 找，也可以用环境变量指定：
 
 ```bash
-FFMPEG=/path/to/ffmpeg python media/make_promo.py
+FFMPEG=/path/to/ffmpeg python promo/make_promo.py
 ```
 
 帧是直接以 rawvideo 管道喂给 ffmpeg 的，**不落盘**，所以跑完不会留下一堆 PNG。
