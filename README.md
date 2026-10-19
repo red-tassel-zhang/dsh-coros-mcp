@@ -281,8 +281,9 @@ MIT
 
 ## 推广素材
 
-跟使用无关，单独放在 [`promo/`](promo/) 里：40 秒演示视频、封面、生成脚本。
+跟使用无关，单独放在 [`promo/`](promo/) 里：两分钟视频、封面、生成脚本。
 
-- [promo/promo.mp4](promo/promo.mp4) —— 30 秒看懂症状 → 根因 → 方案
+- [promo/promo.mp4](promo/promo.mp4) —— **能当教程看的两分钟视频**：症状 → 根因 → 架构 → 下载 → 写配置 → 重启 → 验证 → 排错，走完就等于装完
+- [promo/cover.png](promo/cover.png) —— 封面（也用作仓库社交预览图）
 - [promo/README.md](promo/README.md) —— 想改文案的话怎么重跑
 
