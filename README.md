@@ -273,6 +273,22 @@ node --test test/hoist.test.js
 - 这个代理是**等宽补丁**，不是通用 JSON Schema 规范化器；它只处理"`$defs` 嵌在子 schema 里、`$ref` 指向文档根"这一种模式。
 - 与 COROS / DeepSeek 官方无隶属关系，仅为个人集成记录。
 
+## 参与
+
+| 参与者 | 角色 | 做了什么 |
+|---|---|---|
+| [red-tassel-zhang](https://github.com/red-tassel-zhang) | 维护者 | 提出思路、在真机上验证、拍板取舍、发布 |
+| DeepSeek Harness | 协作 agent | 撞上报错并定位 `$defs` 根因、写代理与测试、起草教程与视频脚本 |
+
+如实记一笔：这个方案是人机协作做出来的——报错是它先撞上的，代理是它先写的，
+文档和视频脚本是它先起草的，人负责判断哪儿该改、哪儿该停。
+
+需要说明的是，这只表示本仓库在 **DeepSeek Harness** 这个 agent 的协助下完成，
+**不代表 DeepSeek 官方对本仓库的背书**，也不代表 COROS 认可这套做法。
+COROS、DeepSeek Harness 及相关商标、截图版权归各自所有者。
+
+想复现同样的协作方式：把 `docs/tutorial.md` 和本文档一起喂给它，让它照着踩一遍坑。
+
 ## License
 
 MIT
