@@ -18,6 +18,7 @@ Pointer '/$defs/Section' does not exist
 ## 目录
 
 - [为什么需要这个仓库](#为什么需要这个仓库)
+- [官方资料](#官方资料)
 - [30 秒接入](#30-秒接入)
 - [原理：为什么必须是两层](#原理为什么必须是两层)
 - [代理做了什么](#代理做了什么)
@@ -68,6 +69,22 @@ COROS 服务端把 `$defs` 写在子 schema 内部，`$ref` 却按文档根去�
 | `updateTrainingPlan` | 改训练计划 |
 | `createSingleWorkout` | 新建课表模板（库） |
 | `updateWorkoutDetails` | 改课表模板（库） |
+
+---
+
+## 官方资料
+
+COROS 官方提供了 MCP 接入，官方自述是「主要运动手表品牌首个官方支持的 MCP」。对外只给两条路径：**HTTP OAuth URL** 或 **Skill（`npm install -g coros-mcp`）**，公开支持的平台是 WorkBuddy、ChatGPT、豆包、Claude、OpenClaw。
+
+![COROS 官方公告：支持的 AI 平台与两种接入方式](media/official-coros-mcp.jpg)
+
+- 官方推文（微信公众号）：[COROS MCP 介绍](https://mp.weixin.qq.com/s?__biz=MzkyOTQ5NjE4OQ==&mid=2247592261&idx=2&sn=37a2c37a6e2eaa5ec43850d786fd5c9d&chksm=c3f1deb4c414b0868ec88d826f4777ea578794985ed2ccdf35742c50bf598bc7a12f8f46f4d0) —— 微信文章，需在微信内打开，可能要求过验证
+- 官方仓库与接入指南：[coroslab/COROS-MCP](https://github.com/coroslab/COROS-MCP)
+- 官方网关：<https://mcp.coros.com/mcp>
+
+这份列表里没有 DeepSeek Harness；而 DSH 的 `dsh-mcp-client` 也不支持需要 OAuth 授权的远程 MCP —— 这正是下面两个问题的来历。
+
+> 截图与链接版权归 COROS 所有，此处仅作事实引用。
 
 ---
 
