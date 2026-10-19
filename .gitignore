@@ -1,0 +1,20 @@
+# 依赖与构建产物
+node_modules/
+*.log
+
+# 媒体中间产物（只提交成片）
+media/frames/
+media/*.tmp
+media/build.log
+media/preview_*.png
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# 本地环境
+.env
+.env.*

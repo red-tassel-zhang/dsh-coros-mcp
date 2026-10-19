@@ -1,0 +1,19 @@
+# 可直接抄的配置片段
+#
+# 位置：<DSH_HOME>/profiles/<profile>/cordis.patch.yml
+# 该文件顶层必须是一个 YAML 数组，`- insert:` 本身就是一个数组元素。
+
+- insert:
+    - id: mcp-coros
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: coros
+        transport: stdio
+        # Windows 建议写 node.exe 的绝对路径；正斜杠，避免 YAML 转义
+        command: node
+        args:
+          # 改成你 clone 之后 coros-mcp-proxy.js 的绝对路径
+          - '/absolute/path/to/coros-mcp-proxy.js'
+          - 'https://mcpcn.coros.com/mcp'
+        # 写课表/建计划比读数据慢，默认 60s 容易超时
+        toolCallTimeoutMs: 120000
